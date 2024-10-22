@@ -68,12 +68,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 		
 		<dependency>
    			 <groupId>org.springframework.boot</groupId>
     		 <artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 		
+=======
+>>>>>>> f6bc47ad0ae5179d0071be04b3c501af4c5dafd7
 		<dependency>
     <groupId>org.springdoc</groupId>
     <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

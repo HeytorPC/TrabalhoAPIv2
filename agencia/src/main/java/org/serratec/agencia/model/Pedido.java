@@ -107,6 +107,7 @@ public class Pedido {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+<<<<<<< HEAD
 
 	@Override
 	public String toString() {
@@ -116,4 +117,6 @@ public class Pedido {
 	}
     
     
+=======
+>>>>>>> f6bc47ad0ae5179d0071be04b3c501af4c5dafd7
 }
