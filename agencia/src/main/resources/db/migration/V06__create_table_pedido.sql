@@ -10,4 +10,5 @@ CREATE TABLE pedidos (
     desconto DECIMAL(10, 2),
     cliente_id BIGINT,
     FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+
 );

@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PedidoService {
 
-    @Autowired
+    
+	@Autowired
     private PedidoRepository repositorio;
 
     public List<PedidoDto> buscarTodos() {
@@ -48,4 +49,5 @@ public class PedidoService {
         repositorio.save(pedidoEntity);
         return Optional.of(PedidoDto.toDto(pedidoEntity));
     }
+
 }

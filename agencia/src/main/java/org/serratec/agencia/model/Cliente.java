@@ -14,6 +14,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity 
 @Table(name = "clientes")
@@ -27,6 +28,7 @@ public class Cliente {
     
     @NotNull
     @Column(unique = true)
+    @Size(min=11, max =11, message = " O CPF informado não é válido Por favor, verifique e tente novamente.")
     private String cpf;
     
     private LocalDate dataNascimento;
@@ -36,6 +38,7 @@ public class Cliente {
     @NotNull
     @Email
     @Column(unique = true)
+    @Size(min=11, max=100, message = " O email informado não é válido Por favor, verifique e tente novamente.")
     private String email;
     
     @ManyToOne(cascade = CascadeType.ALL)

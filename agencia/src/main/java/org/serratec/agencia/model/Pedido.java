@@ -1,6 +1,8 @@
 package org.serratec.agencia.model;
 
 import java.time.LocalDate;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -31,9 +33,10 @@ public class Pedido {
     private double desconto;
     
     @ManyToOne
+    (cascade = CascadeType.ALL)
     private Cliente cliente;
-    
-    public Long getId() {
+   
+	public Long getId() {
         return id;
     }
 
