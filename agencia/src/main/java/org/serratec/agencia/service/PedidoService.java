@@ -15,6 +15,9 @@ public class PedidoService {
     
 	@Autowired
     private PedidoRepository repositorio;
+	
+	@Autowired
+	private EmailService emailService;
 
     public List<PedidoDto> buscarTodos() {
         return repositorio.findAll().stream().map(p -> PedidoDto.toDto(p)).toList();
@@ -29,6 +32,7 @@ public class PedidoService {
 
     public PedidoDto salvarPedido(PedidoDto dto) {
         Pedido pedidoEntity = repositorio.save(dto.toEntity());
+        emailService.enviarEmail("mateusazevedofaria@gmail.com", "Novo Pedido", pedidoEntity.toString());
         return PedidoDto.toDto(pedidoEntity);
     }
 
