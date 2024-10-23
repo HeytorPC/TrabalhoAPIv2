@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -63,14 +62,37 @@ public class ClienteController {
     @Operation(summary = "Cadastrar um novo Cliente", 
     description = "Cria um novo cliente com base nos dados fornecidos e retorna o cliente criado.")
     @ApiResponses(value = {
-    		@ApiResponse(responseCode = "201", description = "Cliente criado com sucesso"),
-    		@ApiResponse(responseCode = "400", description = "Dados de entrada inválidos"),
-    		@ApiResponse(responseCode = "500", description = "Erro interno do servidor")
+            @ApiResponse(responseCode = "201", description = "Cliente criado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Dados de entrada inválidos"),
+            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     public ResponseEntity<String> cadastrarCliente(@RequestBody @Valid ClienteDto dto) {
+        String cpf = dto.cpf(); 
+        String email = dto.email(); 
+
+       
+        if (cpf == null || cpf.isEmpty()) {
+            return new ResponseEntity<>("Erro: O CPF não pode estar vazio.", HttpStatus.BAD_REQUEST);
+        }
+        
+        if (cpf == null || cpf.length() != 11) {
+            return new ResponseEntity<>("Erro: O CPF deve ter exatamente 11 dígitos.", HttpStatus.BAD_REQUEST);
+        }
+
+       
+        if (email == null || email.isEmpty()) {
+            return new ResponseEntity<>("Erro: O e-mail não pode estar vazio.", HttpStatus.BAD_REQUEST);
+        }
+
+        
+        if (!servico.ehEmailUnico(email)) {
+            return new ResponseEntity<>("Erro: O e-mail já está em uso.", HttpStatus.BAD_REQUEST);
+        }
+
         ClienteDto clienteCriado = servico.salvarCliente(dto);
         return new ResponseEntity<>("Cliente cadastrado com sucesso: " + clienteCriado, HttpStatus.CREATED);
     }
+
     @DeleteMapping("/{id}")
     @Operation(summary = "Excluir um Cliente", 
     description = "Exclui um cliente existente com base no ID fornecido.")

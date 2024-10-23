@@ -48,4 +48,9 @@ public class ClienteService {
         repositorio.save(clienteEntity);
         return Optional.of(ClienteDto.toDto(clienteEntity));
     }
+
+	public boolean ehEmailUnico(String email) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
