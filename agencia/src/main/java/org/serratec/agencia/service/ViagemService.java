@@ -28,7 +28,6 @@ public class ViagemService {
 
     public ViagemDto salvarViagem(ViagemDto dto) {
         Viagem viagemEntity = repositorio.save(dto.toEntity());
-        
         return ViagemDto.toDto(viagemEntity);
     }
 

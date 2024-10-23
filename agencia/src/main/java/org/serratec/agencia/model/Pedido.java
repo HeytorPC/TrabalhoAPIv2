@@ -107,16 +107,4 @@ public class Pedido {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-<<<<<<< HEAD
-
-	@Override
-	public String toString() {
-		return "Pedido nº =" + id + ", dataPedido =" + dataPedido + ", metodoPagamento =" + metodoPagamento
-				+ ", statusPedido =" + statusPedido + ", valorTotal =R$ " + valorTotal + ", valorLiquido = R$ " + valorLiquido
-				+ ", valorBruto = R$ " + valorBruto + ", desconto =" + desconto + ", cliente =" + cliente + "]";
-	}
-    
-    
-=======
->>>>>>> f6bc47ad0ae5179d0071be04b3c501af4c5dafd7
 }

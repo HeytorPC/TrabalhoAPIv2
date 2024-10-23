@@ -67,11 +67,10 @@ public class ClienteController {
     		@ApiResponse(responseCode = "400", description = "Dados de entrada inválidos"),
     		@ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @ResponseStatus(HttpStatus.CREATED)
-    public ClienteDto cadastrarCliente(@RequestBody @Valid ClienteDto dto) {
-        return servico.salvarCliente(dto);
+    public ResponseEntity<String> cadastrarCliente(@RequestBody @Valid ClienteDto dto) {
+        ClienteDto clienteCriado = servico.salvarCliente(dto);
+        return new ResponseEntity<>("Cliente cadastrado com sucesso: " + clienteCriado, HttpStatus.CREATED);
     }
-
     @DeleteMapping("/{id}")
     @Operation(summary = "Excluir um Cliente", 
     description = "Exclui um cliente existente com base no ID fornecido.")

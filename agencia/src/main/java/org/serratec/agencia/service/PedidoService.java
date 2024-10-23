@@ -9,23 +9,12 @@ import org.serratec.agencia.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-import jakarta.validation.constraints.Email;
-
-=======
->>>>>>> f6bc47ad0ae5179d0071be04b3c501af4c5dafd7
 @Service
 public class PedidoService {
 
     
 	@Autowired
     private PedidoRepository repositorio;
-<<<<<<< HEAD
-	
-	@Autowired
-	private EmailService emailService;
-=======
->>>>>>> f6bc47ad0ae5179d0071be04b3c501af4c5dafd7
 
     public List<PedidoDto> buscarTodos() {
         return repositorio.findAll().stream().map(p -> PedidoDto.toDto(p)).toList();
@@ -40,11 +29,6 @@ public class PedidoService {
 
     public PedidoDto salvarPedido(PedidoDto dto) {
         Pedido pedidoEntity = repositorio.save(dto.toEntity());
-<<<<<<< HEAD
-        emailService.enviarEmail("apiteste482@gmail.com\n", "Novo Pedido", pedidoEntity.toString());
-        
-=======
->>>>>>> f6bc47ad0ae5179d0071be04b3c501af4c5dafd7
         return PedidoDto.toDto(pedidoEntity);
     }
 
